@@ -7,7 +7,8 @@ connection = psycopg2.connect(
             dbname="baron",
             user="itmo",
             password="baron-itmo",
-            target_session_attrs="read-write"
+            target_session_attrs="read-write",
+            sslrootcert="system",
         )
 
 cursor = connection.cursor()
