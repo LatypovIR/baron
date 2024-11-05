@@ -16,7 +16,7 @@ jobs:
         run: pip install -r requirements.txt
 
   deploy:
-    needs: [run_tests]
+    needs: [build]
     runs-on: [ubuntu-latest]
     env:
       LOGIN: ${{ secrets.DOCKER_LOGIN }}
