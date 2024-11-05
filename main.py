@@ -8,10 +8,9 @@ connection = psycopg2.connect(
             user="itmo",
             password="baron-itmo",
             target_session_attrs="read-write",
-            sslrootcert="system",
         )
+connection.autocommit = True
 
 cursor = connection.cursor()
 query = cursor.execute("insert into test.abc values('docker');")
-connection.commit()
 connection.close()
