@@ -23,11 +23,6 @@ jobs:
       NAME: ${{ secrets.DOCKER_NAME }}
       DOCKER: ${{ secrets.DOCKER_LOGIN }}/${{ secrets.DOCKER_NAME }}:main
     steps:
-      - name: Install ssh keys
-        run: |
-          install -m 600 -D /dev/null ~/.ssh/id_rsa
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
       - name: Login to docker
         run: echo ${{ secrets.DOCKER_TOKEN }} | docker login -u ${{ secrets.DOCKER_LOGIN }} --password-stdin
       - uses: actions/checkout@master
